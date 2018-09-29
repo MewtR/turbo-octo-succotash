@@ -137,8 +137,23 @@ def depth_first_search(p):
         #input("Press Enter to continue")
     return None
 
+def find_solution_path(goal_node):
+    solution = []
+    while (goal_node.parent):
+        solution.insert(0, goal_node)
+        goal_node = goal_node.parent
+    solution.insert(0, goal_node)
+    return solution
+
+def write_to_file(solution_path):
+    with open('puzzleDFS.txt', 'w') as f:
+        for x in solution_path:
+            f.write("{} {} \n".format(x.move,x.config))
 
 
+#Example puzzles:
+# 0 2 3 4 1 6 7 8 5 9 10 11 <- solved instantaneously
+# 0 2 3 4 1 5 7 8 6 9 10 11 <- takes about 1 min to solve
 
 print ("Is puzzle valid? "+str(valid(root_node)))
 print ("Is puzzle in goal state? "+str(goal(root_node)))
@@ -148,6 +163,13 @@ print ("Config:        "+str(goal_node.config))
 print ("Parent config: "+str(goal_node.parent.config))
 print ("Parent: "+str(goal_node.parent))
 print ("Move: "+goal_node.move)
+
+solution_path = find_solution_path(goal_node)
+#print("Solution path is: "+str(solution_path))
+#for x in solution_path:
+#    print (x.move+"  "+str(x.config))
+write_to_file(solution_path)
+
 
 #########Code commented out used for testing various functions ##################
 #testVisited = generateChildren(root_node)
