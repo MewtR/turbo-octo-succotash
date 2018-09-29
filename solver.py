@@ -25,7 +25,7 @@ def goal(p):
     if not valid(p):
         return False
 
-    for x in range(1, 11):
+    for x in range(1, 12):
         if p.config[x-1] != x:
             return False
     return True
@@ -142,12 +142,12 @@ def depth_first_search(p):
 
 print ("Is puzzle valid? "+str(valid(root_node)))
 print ("Is puzzle in goal state? "+str(goal(root_node)))
-#goal_node = depth_first_search(root_node)
-#print ("------ Reached Goal State -------")
-#print ("Config:        "+str(goal_state.config))
-#print ("Parent config: "+str(goal_state.parent.config))
-#print ("Parent: "+str(goal_state.parent))
-#print ("Move: "+goal_state.move)
+goal_node = depth_first_search(root_node)
+print ("------ Reached Goal State -------")
+print ("Config:        "+str(goal_node.config))
+print ("Parent config: "+str(goal_node.parent.config))
+print ("Parent: "+str(goal_node.parent))
+print ("Move: "+goal_node.move)
 
 #########Code commented out used for testing various functions ##################
 #testVisited = generateChildren(root_node)
@@ -159,10 +159,10 @@ print ("Is puzzle in goal state? "+str(goal(root_node)))
 #for child in testChildren:
 #    print ("Config:        "+str(child.config))
 
-testChildren = generateChildren(root_node)
-for child in testChildren:
-    print ("Parent config: "+str(child.parent.config))
-    print ("Config:        "+str(child.config))
-    print ("Parent: "+str(child.parent))
-    print ("Move: "+child.move)
-    print ("\n")
+#testChildren = generateChildren(root_node)
+#for child in testChildren:
+#    print ("Parent config: "+str(child.parent.config))
+#    print ("Config:        "+str(child.config))
+#    print ("Parent: "+str(child.parent))
+#    print ("Move: "+child.move)
+#    print ("\n")
