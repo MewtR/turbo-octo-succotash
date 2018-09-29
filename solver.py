@@ -40,7 +40,8 @@ def generateChildren(p):
     children = []
     zero_index = p.config.index(0)
     #Up left is index - 5
-    if (zero_index - 5 > -1) :
+    #if blank is at index 8 it can't go up left
+    if ((zero_index - 5 > -1) and (zero_index != 8)) :
         up_left_index = zero_index-5
         up_left_child = p.config.copy()
         up_left_child = swap(up_left_child, up_left_index, zero_index)
@@ -52,18 +53,21 @@ def generateChildren(p):
         up_child = swap(up_child, up_index, zero_index)
         children.append(Node(up_child, p, chr(up_index+97)))
     #Up right is index - 3
+    # if blank at index 3, 7 or 11, can't go up right
     if ((zero_index - 3 > 0) and ((zero_index-3) % 4 != 0)):
         up_right_index = zero_index-3
         up_right_child = p.config.copy()
         up_right_child = swap(up_right_child, up_right_index, zero_index)
         children.append(Node(up_right_child, p, chr(up_right_index+97)))
     #Left is index-1
+    #indices 0, 4 and 8 can't go left
     if ((zero_index % 4 != 0)):
         left_index = zero_index-1
         left_child = p.config.copy()
         left_child = swap(left_child, left_index, zero_index)
         children.append(Node(left_child, p, chr(left_index+97)))
     #Right is index+1
+    #indices 3, 7 and 11 can't go right
     if ((zero_index % 4 != 3)):
         right_index = zero_index+1
         right_child = p.config.copy()
@@ -76,7 +80,8 @@ def generateChildren(p):
         down_left_child = swap(down_left_child, down_left_index, zero_index)
         children.append(Node(down_left_child, p, chr(down_left_index+97)))
     #Down right is index+5
-    if ((zero_index + 5 < 12)):
+    #indices 3, 7 and 11 can't go down right
+    if ((zero_index + 5 < 12) and (zero_index != 3)):
         down_right_index = zero_index+5
         down_right_child = p.config.copy()
         down_right_child = swap(down_right_child, down_right_index, zero_index)
@@ -137,12 +142,12 @@ def depth_first_search(p):
 
 print ("Is puzzle valid? "+str(valid(root_node)))
 print ("Is puzzle in goal state? "+str(goal(root_node)))
-goal_node = depth_first_search(root_node)
-print ("------ Reached Goal State -------")
-print ("Config:        "+str(goal_state.config))
-print ("Parent config: "+str(goal_state.parent.config))
-print ("Parent: "+str(goal_state.parent))
-print ("Move: "+goal_state.move)
+#goal_node = depth_first_search(root_node)
+#print ("------ Reached Goal State -------")
+#print ("Config:        "+str(goal_state.config))
+#print ("Parent config: "+str(goal_state.parent.config))
+#print ("Parent: "+str(goal_state.parent))
+#print ("Move: "+goal_state.move)
 
 #########Code commented out used for testing various functions ##################
 #testVisited = generateChildren(root_node)
@@ -154,10 +159,10 @@ print ("Move: "+goal_state.move)
 #for child in testChildren:
 #    print ("Config:        "+str(child.config))
 
-#for child in testChildren:
-#    print ("Config:        "+str(child.config))
-#    print ("Parent config: "+str(child.parent.config))
-#    print ("Parent: "+str(child.parent))
-#    print ("Move: "+child.move)
-#    print ("Is parent equal to child? "+ str(child == root_node))
-#    print ("\n")
+testChildren = generateChildren(root_node)
+for child in testChildren:
+    print ("Parent config: "+str(child.parent.config))
+    print ("Config:        "+str(child.config))
+    print ("Parent: "+str(child.parent))
+    print ("Move: "+child.move)
+    print ("\n")
