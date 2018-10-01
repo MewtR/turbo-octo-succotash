@@ -13,4 +13,8 @@ class Node:
     def __ne__(self, other):
         #Override the default Unequal behavior
         return self.config != other.config
+
+    #In case there is a tie during heapq operations
+    def __lt__(self, other):
+        return ord(self.move) < ord(other.move)
        
