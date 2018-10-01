@@ -1,8 +1,10 @@
 class Node:
-    def __init__(self, config, parent, move):
+    def __init__(self, config, parent, move, cost_so_far):
         self.config = config
         self.parent = parent
         self.move = move
+        #Used for A* algorithm only
+        self.cost_so_far = cost_so_far
 
     def __eq__(self, other):
         #Override the default Equals behavior
