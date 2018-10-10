@@ -8,6 +8,27 @@ def sum_of_permutation_inversion(p):
                 value+=1
     return value
 
+def manhattan_distance(p):
+    value = 0
+    for x in range(0,12):
+        start = x
+        if p.config[x] == 0:
+            end = 11
+        else:
+            end = p.config[x]-1
+        value+= stepEW(start,end) + stepNS(start,end)
+    return value
+        
+        
+def stepNS(start, end):
+    return abs((start//4) - (end//4))
+
+
+def stepEW(start, end):
+    return abs((start % 4) - (end % 4))
+
+
+
 
 
 

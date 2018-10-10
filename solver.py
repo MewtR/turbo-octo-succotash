@@ -24,16 +24,32 @@ root_node = Node(puzzle, None, '0', 0)
 
 print ("Is puzzle valid? "+str(utilities.valid(root_node)))
 print ("Is puzzle in goal state? "+str(utilities.goal(root_node)))
+print ("Manhattan distance is: "+str(heuristics.manhattan_distance(root_node)))
 #A*
+#SPI
 start_time = time.time()
-goal_node = a_star.search(root_node)
+goal_node = a_star.searchSPI(root_node)
 solution_path = utilities.find_solution_path(goal_node)
 utilities.write_to_file(solution_path, 'puzzleA_star.txt')
-print ("Time to finish A*: {}".format(time.time()-start_time))
-#BFS
+print ("Time to finish A* SPI: {}".format(time.time()-start_time))
+#MD
 start_time = time.time()
-goal_node = best_first.search(root_node)
+goal_node = a_star.searchMD(root_node)
 solution_path = utilities.find_solution_path(goal_node)
-utilities.write_to_file(solution_path, 'puzzleBFS.txt')
-print ("Time to finish BFS: {}".format(time.time()-start_time))
-#goal_node = depth_first.search(root_node)
+utilities.write_to_file(solution_path, 'puzzleA_star.txt')
+print ("Time to finish A* MD: {}".format(time.time()-start_time))
+#BFS
+#SPI
+start_time = time.time()
+goal_node = best_first.searchSPI(root_node)
+solution_path = utilities.find_solution_path(goal_node)
+utilities.write_to_file(solution_path, 'puzzleBFS-h1.txt')
+print ("Time to finish BFS SPI: {}".format(time.time()-start_time))
+goal_node = depth_first.search(root_node)
+#MD
+start_time = time.time()
+goal_node = best_first.searchMD(root_node)
+solution_path = utilities.find_solution_path(goal_node)
+utilities.write_to_file(solution_path, 'puzzleBFS-h2.txt')
+print ("Time to finish BFS MD: {}".format(time.time()-start_time))
+goal_node = depth_first.search(root_node)
