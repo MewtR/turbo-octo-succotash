@@ -115,4 +115,4 @@ def find_solution_path(goal_node):
 def write_to_file(solution_path, file_name):
     with open(file_name, 'w') as f:
         for x in solution_path:
-            f.write("{} {} cost: {}\n".format(x.move,x.config, x.cost_so_far))
+            f.write("{} {} \n".format(x.move,x.config))

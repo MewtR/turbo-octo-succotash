@@ -16,6 +16,13 @@ def manhattan_distance(p):
             end = 11
         else:
             end = p.config[x]-1
+        stepEWV = stepEW(start,end)
+        stepNSV = stepNS(start,end)
+        #Allow diagonal moves
+        #if (stepEWV >= stepNSV):
+        #    value+=stepEWV
+        #else: 
+        #    value+=stepNSV
         value+= stepEW(start,end) + stepNS(start,end)
     return value
         

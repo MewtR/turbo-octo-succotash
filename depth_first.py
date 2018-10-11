@@ -7,11 +7,8 @@ def search(p):
 
     while unvisited:
         current = unvisited.pop()
-    #    if current.parent:
-    #        print ("Parent config: "+str(current.parent.config))
-    #    print ("Config:        "+str(current.config))
-    #    print ("Move: "+current.move)
-    #    print ("\n")
+        with open('puzzleDFSTrace.txt', 'a') as f:
+                f.write("{} {} \n".format(current.move, current.config))
         if utilities.goal(current):
             return current
         if utilities.wasVisited(current, visited):

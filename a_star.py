@@ -9,8 +9,8 @@ def searchSPI(p):
 
     while unvisited:
         current = heapq.heappop(unvisited)[1]
-        with open('puzzleA_starSPITrace.txt', 'a') as f:
-                f.write("{} {} cost = {}\n".format(current.move, current.config, current.cost_so_far))
+       # with open('puzzleA_starSPITrace.txt', 'a') as f:
+       #         f.write("{} {} cost = {}\n".format(current.move, current.config, current.cost_so_far))
         if utilities.goal(current):
             return current
         if utilities.wasVisited(current, visited):
@@ -33,8 +33,8 @@ def searchMD(p):
 
     while unvisited:
         current = heapq.heappop(unvisited)[1]
-        with open('puzzleA_starMDTrace.txt', 'a') as f:
-                f.write("{} {} cost = {}\n".format(current.move, current.config, current.cost_so_far))
+       # with open('puzzleA_starMDTrace.txt', 'a') as f:
+       #         f.write("{} {} cost = {}\n".format(current.move, current.config, current.cost_so_far))
         if utilities.goal(current):
             return current
         if utilities.wasVisited(current, visited):
