@@ -19,11 +19,11 @@ def manhattan_distance(p):
         stepEWV = stepEW(start,end)
         stepNSV = stepNS(start,end)
         #Allow diagonal moves
-        #if (stepEWV >= stepNSV):
-        #    value+=stepEWV
-        #else: 
-        #    value+=stepNSV
-        value+= stepEW(start,end) + stepNS(start,end)
+        if (stepEWV >= stepNSV):
+            value+=stepEWV
+        else: 
+            value+=stepNSV
+        #value+= stepEW(start,end) + stepNS(start,end)
     return value
         
         
@@ -34,6 +34,14 @@ def stepNS(start, end):
 def stepEW(start, end):
     return abs((start % 4) - (end % 4))
 
+def hamming_distance(p):
+    value = 0
+    for x in range(12):
+        if p.config[x] == 0:
+            continue
+        if p.config[x] != x+1:
+            value+=1
+    return value
 
 
 

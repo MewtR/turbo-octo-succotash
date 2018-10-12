@@ -20,9 +20,13 @@ root_node = Node(puzzle, None, '0', 0)
 # 0 2 3 4 1 6 7 8 5 9 10 11 <- solved instantaneously
 # 0 2 3 4 1 5 7 8 6 9 10 11 <- solved instantaneously
 # 9 0 6 1 3 10 8 11 2 5 7 4 <- solved instantaneously
+# 1 0 3 7 5 2 6 4 9 10 11 8 <- puzzle from handout
 
 #print ("Is puzzle valid? "+str(utilities.valid(root_node)))
 #print ("Is puzzle in goal state? "+str(utilities.goal(root_node)))
+print ("Manhattan distance: "+str(heuristics.manhattan_distance(root_node)))
+print ("SPI: "+str(heuristics.sum_of_permutation_inversion(root_node)))
+print ("Hamming distance: "+str(heuristics.hamming_distance(root_node)))
 #BFS
 #SPI
 start_time = time.time()
@@ -38,14 +42,20 @@ utilities.write_to_file(solution_path, 'puzzleBFS-h2.txt')
 print ("Time to finish BFS MD: {}".format(time.time()-start_time))
 #A*
 #SPI
-start_time = time.time()
-goal_node = a_star.searchSPI(root_node)
+#start_time = time.time()
+#goal_node = a_star.searchSPI(root_node)
+#solution_path = utilities.find_solution_path(goal_node)
+#utilities.write_to_file(solution_path, 'puzzleAs-h1.txt')
+#print ("Time to finish A* SPI: {}".format(time.time()-start_time))
+#HD
+goal_node = a_star.searchHD(root_node)
 solution_path = utilities.find_solution_path(goal_node)
-utilities.write_to_file(solution_path, 'puzzleAs-h1.txt')
-print ("Time to finish A* SPI: {}".format(time.time()-start_time))
+utilities.write_to_file(solution_path, 'puzzleAs-h3.txt')
+print ("Time to finish A* hamming distance: {}".format(time.time()-start_time))
 #MD
 start_time = time.time()
 goal_node = a_star.searchMD(root_node)
 solution_path = utilities.find_solution_path(goal_node)
 utilities.write_to_file(solution_path, 'puzzleAs-h2.txt')
 print ("Time to finish A* MD: {}".format(time.time()-start_time))
+start_time = time.time()
