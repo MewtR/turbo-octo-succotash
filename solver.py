@@ -33,13 +33,13 @@ start_time = time.time()
 goal_node = best_first.searchHD(root_node)
 solution_path = utilities.find_solution_path(goal_node)
 utilities.write_to_file(solution_path, 'puzzleBFS-h1.txt')
-print ("Time to finish BFS SPI: {}".format(time.time()-start_time))
+print ("Time to finish BFS hamming distance: {}".format(time.time()-start_time))
 #MD
 start_time = time.time()
 goal_node = best_first.searchMD(root_node)
 solution_path = utilities.find_solution_path(goal_node)
 utilities.write_to_file(solution_path, 'puzzleBFS-h2.txt')
-print ("Time to finish BFS MD: {}".format(time.time()-start_time))
+print ("Time to finish BFS Manhattan distance: {}".format(time.time()-start_time))
 #A*
 #SPI
 #start_time = time.time()
