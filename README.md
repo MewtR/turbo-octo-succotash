@@ -1,7 +1,11 @@
 # turbo-octo-succotash
+
+###Definition Used for the Moves:
+Defintion 2 was chosen. Meaning that UP translates to the blank tile moving up. The same goes for all other directions.
+
 ### Instructions on how to run (on linux):
 
-All instructions below can be done in a terminal
+All instructions below can be executed in a terminal
 
 1)Clone the repo with git clone https://github.com/MewtR/turbo-octo-succotash.git
 
